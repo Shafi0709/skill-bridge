@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Resume PDF</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 30px; }
+    h1, h2, h3 { color: #333; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Resume</h1>
+  <h2>Summary</h2>
+  <p><%= resume.summary %></p>
+
+  <h2>Education</h2>
+  <ul>
+    <% resume.education.forEach(e => { %>
+      <li><%= e.degree %> at <%= e.institution %> (<%= e.year %>)</li>
+    <% }) %>
+  </ul>
+
+  <h2>Experience</h2>
+  <ul>
+    <% resume.experience.forEach(ex => { %>
+      <li><strong><%= ex.position %></strong> at <%= ex.company %> (<%= ex.duration %>)<br><%= ex.description %></li>
+    <% }) %>
+  </ul>
+
+  <h2>Skills</h2>
+  <ul>
+    <% resume.skills.forEach(skill => { %>
+      <li><%= skill %></li>
+    <% }) %>
+  </ul>
+</body>
+</html>

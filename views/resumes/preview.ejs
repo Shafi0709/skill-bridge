@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Preview</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container mt-5">
+  <h1>Resume Preview</h1>
+
+  <h3>Summary</h3>
+  <p><%= resume.summary %></p>
+
+  <h3>Education</h3>
+  <ul>
+    <% resume.education.forEach(e => { %>
+      <li><%= e.degree %> at <%= e.institution %> (<%= e.year %>)</li>
+    <% }) %>
+  </ul>
+
+  <h3>Experience</h3>
+  <ul>
+    <% resume.experience.forEach(ex => { %>
+      <li><strong><%= ex.position %></strong> at <%= ex.company %> (<%= ex.duration %>)<br><%= ex.description %></li>
+    <% }) %>
+  </ul>
+
+  <h3>Skills</h3>
+  <ul>
+    <% resume.skills.forEach(skill => { %>
+      <li><%= skill %></li>
+    <% }) %>
+  </ul>
+  <a href="/resume/download" class="btn btn-outline-primary mt-3">Download as PDF</a>
+
+
+  <h4 class="mt-4">Send Your Resume via Email</h4>
+<form method="POST" action="/resume/email" class="mb-4">
+  <div class="mb-2">
+    <input type="email" name="to_email" placeholder="Recipient Email" class="form-control" required />
+  </div>
+  <div class="mb-2">
+    <textarea name="message" placeholder="Message" class="form-control" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-info">Send Resume</button>
+</form>
+
+</div>
+</body>
+</html>
